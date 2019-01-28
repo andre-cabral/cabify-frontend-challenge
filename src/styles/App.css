@@ -385,6 +385,13 @@ input {
 input:-webkit-autofill {
   box-shadow: 0 0 0 30px #FFFFFF inset; }
 
+select {
+  border: 0;
+  font-family: "Avenir Next", "Avenir", "Segoe UI", sans-serif; }
+
+select:-webkit-autofill {
+  box-shadow: 0 0 0 30px #FFFFFF inset; }
+
 .form {
   width: 100%; }
 
@@ -422,6 +429,96 @@ input:-webkit-autofill {
       width: 100%;
       font-size: 12px;
       line-height: 16px; }
+
+.formField-select {
+  display: flex;
+  flex: 1 1 100%;
+  position: relative;
+  border-bottom: solid 1px #A7A7B3;
+  transition: all 0.3s ease; }
+  .formField-select.active .input label {
+    top: 0; }
+  .formField-select.focus {
+    border-color: #7350FF; }
+    .formField-select.focus .select select {
+      color: #7350FF; }
+  .formField-select.disabled {
+    border-bottom: dotted 1px #A7A7B3; }
+    .formField-select.disabled .select select {
+      color: #A7A7B3;
+      cursor: not-allowed; }
+  .formField-select label {
+    color: #717285;
+    font-size: 11px;
+    line-height: 16px;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    transition: all 0.3s ease; }
+  .formField-select select {
+    display: none; }
+  .formField-select .custom-select {
+    padding: 16px 0 8px;
+    width: 100%;
+    font-size: 12px;
+    line-height: 16px;
+    background: transparent;
+    position: relative;
+    z-index: 200;
+    border: none; }
+  .formField-select .custom-arrow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/arrow.svg");
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-color: transparent; }
+    .formField-select .custom-arrow.active {
+      transform: scaleY(-1); }
+  .formField-select .custom-dropdown-options {
+    display: none;
+    color: #717285;
+    font-size: 11px;
+    line-height: 16px;
+    position: absolute;
+    background-color: #FFFFFF;
+    min-width: 310%;
+    max-height: 170px;
+    overflow-y: scroll;
+    padding: 8px;
+    top: 38px;
+    left: -8px;
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(33, 34, 64, 0.16);
+    z-index: 200; }
+    .formField-select .custom-dropdown-options.active {
+      display: block; }
+  .formField-select .custom-option {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    cursor: pointer;
+    font-size: 14px;
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    background: none;
+    border: none; }
+    .formField-select .custom-option:hover {
+      background-color: #A7A7B3; }
+    .formField-select .custom-option-flag {
+      border-radius: 50%; }
+    .formField-select .custom-option-name {
+      margin-left: 16px; }
+    .formField-select .custom-option-prefix {
+      margin-right: 8px;
+      text-align: right;
+      flex-grow: 1; }
 
 .button-primary {
   box-shadow: 0 1px 4px 0 rgba(33, 34, 64, 0.16), inset 0 1px 1px 0 rgba(255, 255, 255, 0.16); }

@@ -1,9 +1,34 @@
 import React, { Component } from 'react';
 import cabifyLogo from '../../images/cabify-logo.svg';
 import '../../styles/App.css';
+import CountryPrefixSelect from '../countryPrefixSelect/countryPrefixSelect'
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      countryCodes: ['ES', 'CL', 'PE', 'MX', 'CO'],
+      prefix: '34',
+    };
+  }
+
+  setPrefix(newPrefix) {
+    this.setState((state, props) => ({
+      prefix: newPrefix
+    }));
+  }
+
   render() {
+    const {
+      fullname,
+      jobdescription,
+      prefix,
+      phonenumber,
+      email,
+      website,
+      address
+    } = this.state;
+
     return (
       <div className="mainWrapper row">
         <article className="businessCard col col6">
@@ -21,7 +46,7 @@ class App extends Component {
                 <p className="businessCard-cardFront-subtitle">Fronte</p>
               </div>
               <div className="businessCard-cardFront-bottom">
-                <p className="businessCard-icon-phone">+34 </p>
+                <p className="businessCard-icon-phone">+{prefix} </p>
                 <p className="businessCard-icon-email"></p>
                 <p className="businessCard-icon-website">www.cabify.com</p>
                 <p className="businessCard-icon-address">Calle Pradillo 42. CP: 28002. Madrid</p>
@@ -50,7 +75,11 @@ class App extends Component {
             </div>
             <div className="row row-separationMedium row-gutterMedium">
               <div className="col col3">
-                {/* select field will be placed here */}
+                <CountryPrefixSelect 
+                  countryCodes={this.state.countryCodes}
+                  defaultValue={this.state.prefix}
+                  onChange={(value) => this.setPrefix(value)}
+                />
               </div>
               <div className="formField-input col col9">
                 <div className="input">

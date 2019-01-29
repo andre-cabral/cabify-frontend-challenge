@@ -61,6 +61,19 @@ class App extends Component {
     }));
   }
 
+  hasEmptyValue() {
+    console.log()
+    return (
+      this.state.fullname === '' ||
+      this.state.jobdescription === '' ||
+      this.state.prefix === '' ||
+      this.state.phonenumber === '' ||
+      this.state.email === '' ||
+      this.state.website === '' ||
+      this.state.address === ''
+    );
+  }
+
   render() {
     const {
       fullname,
@@ -185,7 +198,7 @@ class App extends Component {
               />
             </div>
             <div className="row row-separationHuge">
-              <input className="button button-full button-primary disabled" type="submit" value="Request" />
+              <input className={`button button-full button-primary${this.hasEmptyValue() ? ' disabled' : ''}`} disabled={this.hasEmptyValue()} type="submit" value="Request" />
             </div>
           </form>
         </article>

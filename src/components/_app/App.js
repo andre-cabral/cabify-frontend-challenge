@@ -1,20 +1,63 @@
 import React, { Component } from 'react';
 import cabifyLogo from '../../images/cabify-logo.svg';
 import '../../styles/App.css';
+import CustomInput from '../customInput/customInput';
 import CountryPrefixSelect from '../countryPrefixSelect/countryPrefixSelect'
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      fullname: 'Laura Sánchez',
+      jobdescription: 'Fronte',
       countryCodes: ['ES', 'CL', 'PE', 'MX', 'CO'],
       prefix: '34',
+      phonenumber: '',
+      email: '',
+      website: 'www.cabify.com',
+      address: 'Calle Pradillo 42. CP: 28002. Madrid'
     };
+  }
+
+  setFullname(newFullname) {
+    this.setState((state, props) => ({
+      fullname: newFullname
+    }));
+  }
+
+  setJobdescription(newJobdescription) {
+    this.setState((state, props) => ({
+      jobdescription: newJobdescription
+    }));
   }
 
   setPrefix(newPrefix) {
     this.setState((state, props) => ({
       prefix: newPrefix
+    }));
+  }
+
+  setPhonenumber(newPhonenumber) {
+    this.setState((state, props) => ({
+      phonenumber: newPhonenumber
+    }));
+  }
+
+  setEmail(newEmail) {
+    this.setState((state, props) => ({
+      email: newEmail
+    }));
+  }
+
+  setWebsite(newWebsite) {
+    this.setState((state, props) => ({
+      website: newWebsite
+    }));
+  }
+
+  setAddress(newAddress) {
+    this.setState((state, props) => ({
+      address: newAddress
     }));
   }
 
@@ -42,14 +85,14 @@ class App extends Component {
             <div className="businessCard-cardBack" />
             <div className="businessCard-cardFront">
               <div>
-                <p className="businessCard-cardFront-title">Laura Sánchez</p>
-                <p className="businessCard-cardFront-subtitle">Fronte</p>
+                <p className="businessCard-cardFront-title">{fullname}</p>
+                <p className="businessCard-cardFront-subtitle">{jobdescription}</p>
               </div>
               <div className="businessCard-cardFront-bottom">
                 <p className="businessCard-icon-phone">+{prefix} </p>
-                <p className="businessCard-icon-email"></p>
-                <p className="businessCard-icon-website">www.cabify.com</p>
-                <p className="businessCard-icon-address">Calle Pradillo 42. CP: 28002. Madrid</p>
+                <p className="businessCard-icon-email">{email}</p>
+                <p className="businessCard-icon-website">{website}</p>
+                <p className="businessCard-icon-address">{address}</p>
               </div>
             </div>
           </div>
@@ -57,60 +100,89 @@ class App extends Component {
         <article className="builder col col6">
           <form className="form" action="">
             <div className="row">
-              <div className="formField-input active col col12">
-                <div className="input">
-                  <input type="text" name="fullname" value="Laura Sánchez" />
-                  <label htmlFor="fullname">Full name</label>
-                </div>
-              </div>
+              <CustomInput 
+                name='fullname'
+                label='Full name'
+                type='text'
+                defaultValue='Laura Sánchez'
+                alwaysActive={false}
+                disabled={false}
+                className='col col12'
+                onChange={(value) => this.setFullname(value)}
+                checkValid={(value) => {true}}
+              />
             </div>
             <div className="row row-separationMedium">
-              {/* you probably need to add active/focus/disabled classNames */}
-              <div className="formField-input active focus col col12">
-                <div className="input">
-                  <input type="text" name="jobdescription" value="Fronte" />
-                  <label htmlFor="jobdescription">Job description</label>
-                </div>
-              </div>
+              <CustomInput 
+                name='jobdescription'
+                label='Job description'
+                type='text'
+                defaultValue='Fronte'
+                alwaysActive={false}
+                disabled={false}
+                className='col col12'
+                onChange={(value) => this.setJobdescription(value)}
+                checkValid={(value) => {true}}
+              />
             </div>
             <div className="row row-separationMedium row-gutterMedium">
               <div className="col col3">
                 <CountryPrefixSelect 
                   countryCodes={this.state.countryCodes}
-                  defaultValue={this.state.prefix}
+                  defaultValue='34'
                   onChange={(value) => this.setPrefix(value)}
                 />
               </div>
-              <div className="formField-input col col9">
-                <div className="input">
-                  <input type="tel" name="ponenumber" />
-                  <label htmlFor="ponenumber">Phone number</label>
-                </div>
-              </div>
+              <CustomInput 
+                name='phonenumber'
+                label='Phone number'
+                type='tel'
+                defaultValue=''
+                alwaysActive={false}
+                disabled={false}
+                className='col col9'
+                onChange={(value) => this.setPhonenumber(value)}
+                checkValid={(value) => {true}}
+              />
             </div>
             <div className="row row-separationMedium">
-              <div className="formField-input col col12">
-                <div className="input">
-                  <input type="email" name="email" />
-                  <label htmlFor="email">Email</label>
-                </div>
-              </div>
+              <CustomInput 
+                name='email'
+                label='Email'
+                type='email'
+                defaultValue=''
+                alwaysActive={false}
+                disabled={false}
+                className='col col12'
+                onChange={(value) => this.setEmail(value)}
+                checkValid={(value) => {true}}
+              />
             </div>
             <div className="row row-separationMedium">
-              <div className="formField-input active disabled col col12">
-                <div className="input">
-                  <input type="text" name="website" value="www.cabify.com" />
-                  <label htmlFor="website">Website</label>
-                </div>
-              </div>
+              <CustomInput 
+                name='website'
+                label='Website'
+                type='text'
+                defaultValue='www.cabify.com'
+                alwaysActive={true}
+                disabled={true}
+                className='col col12'
+                onChange={(value) => this.setWebsite(value)}
+                checkValid={(value) => {true}}
+              />
             </div>
             <div className="row row-separationMedium">
-              <div className="formField-input active col col12">
-                <div className="input">
-                  <input type="text" name="address" value="Calle Pradillo 42. CP: 28002. Madrid" />
-                  <label htmlFor="address">Address</label>
-                </div>
-              </div>
+              <CustomInput 
+                name='address'
+                label='Address'
+                type='text'
+                defaultValue='Calle Pradillo 42. CP: 28002. Madrid'
+                alwaysActive={false}
+                disabled={false}
+                className='col col12'
+                onChange={(value) => this.setAddress(value)}
+                checkValid={(value) => {true}}
+              />
             </div>
             <div className="row row-separationHuge">
               <input className="button button-full button-primary disabled" type="submit" value="Request" />

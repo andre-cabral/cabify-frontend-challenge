@@ -6,7 +6,7 @@ export function isEmail(email) {
 };
 
 export function isPhoneNumber(phoneNumber) {
-  if( phoneNumber.match(/^(\(?\+?[0-9]*\)?)?[0-9_\- \(\)]*$/) ){
+  if( phoneNumber.match(/^(\(?\+?[0-9]*\)?)?[0-9_\- \(\)]+$/) ){
     return true;
   };
   return false;

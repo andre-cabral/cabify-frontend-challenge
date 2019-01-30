@@ -47,6 +47,14 @@ select:-webkit-autofill {
         cursor: not-allowed;
       }
     }
+
+    &.invalid {
+      border-color: $color-fb-negative;
+      background-image: url("../images/warning.svg");
+      background-repeat: no-repeat;
+      background-position: right center;
+      background-color: transparent;
+    }
     
     .input {
       flex: 1 1 100%;

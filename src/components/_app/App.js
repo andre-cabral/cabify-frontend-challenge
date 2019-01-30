@@ -63,7 +63,6 @@ class App extends Component {
   }
 
   hasEmptyValue() {
-    console.log()
     return (
       this.state.fullname === '' ||
       this.state.jobdescription === '' ||

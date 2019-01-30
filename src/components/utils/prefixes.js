@@ -12,10 +12,6 @@ export function getFlagsImages(codeList) {
   return getFlagsImagesList(codeList);
 };
 
-function importAll(r) {
-  return r.keys().map(r);
-}
-
 export function getCountryName(code) {
   return _.get(countryNames, code);
 }

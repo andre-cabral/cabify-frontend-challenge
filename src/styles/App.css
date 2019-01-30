@@ -410,6 +410,12 @@ select:-webkit-autofill {
     .formField-input.disabled .input input {
       color: #A7A7B3;
       cursor: not-allowed; }
+  .formField-input.invalid {
+    border-color: #FC5959;
+    background-image: url("../images/warning.svg");
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-color: transparent; }
   .formField-input .input {
     flex: 1 1 100%;
     position: relative; }

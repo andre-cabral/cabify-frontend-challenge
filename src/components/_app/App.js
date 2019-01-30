@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import cabifyLogo from '../../images/cabify-logo.svg';
 import '../../styles/App.css';
+import { isEmail, isPhoneNumber } from '../utils/validation';
 import CustomInput from '../customInput/customInput';
 import CountryPrefixSelect from '../countryPrefixSelect/countryPrefixSelect'
 
@@ -68,7 +69,9 @@ class App extends Component {
       this.state.jobdescription === '' ||
       this.state.prefix === '' ||
       this.state.phonenumber === '' ||
+      !isPhoneNumber(this.state.phonenumber) ||
       this.state.email === '' ||
+      !isEmail(this.state.email) ||
       this.state.website === '' ||
       this.state.address === ''
     );
@@ -122,7 +125,6 @@ class App extends Component {
                 disabled={false}
                 className='col col12'
                 onChange={(value) => this.setFullname(value)}
-                checkValid={(value) => {true}}
               />
             </div>
             <div className="row row-separationMedium">
@@ -135,7 +137,6 @@ class App extends Component {
                 disabled={false}
                 className='col col12'
                 onChange={(value) => this.setJobdescription(value)}
-                checkValid={(value) => {true}}
               />
             </div>
             <div className="row row-separationMedium row-gutterMedium">
@@ -155,7 +156,7 @@ class App extends Component {
                 disabled={false}
                 className='col col9'
                 onChange={(value) => this.setPhonenumber(value)}
-                checkValid={(value) => {true}}
+                checkValid={isPhoneNumber}
               />
             </div>
             <div className="row row-separationMedium">
@@ -168,7 +169,7 @@ class App extends Component {
                 disabled={false}
                 className='col col12'
                 onChange={(value) => this.setEmail(value)}
-                checkValid={(value) => {true}}
+                checkValid={isEmail}
               />
             </div>
             <div className="row row-separationMedium">
@@ -181,7 +182,6 @@ class App extends Component {
                 disabled={true}
                 className='col col12'
                 onChange={(value) => this.setWebsite(value)}
-                checkValid={(value) => {true}}
               />
             </div>
             <div className="row row-separationMedium">
@@ -194,7 +194,6 @@ class App extends Component {
                 disabled={false}
                 className='col col12'
                 onChange={(value) => this.setAddress(value)}
-                checkValid={(value) => {true}}
               />
             </div>
             <div className="row row-separationHuge">

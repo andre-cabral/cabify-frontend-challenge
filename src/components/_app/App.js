@@ -104,7 +104,7 @@ class App extends Component {
                 <p className="businessCard-cardFront-subtitle">{jobdescription}</p>
               </div>
               <div className="businessCard-cardFront-bottom">
-                <p className="businessCard-icon-phone">+{prefix} </p>
+                <p className="businessCard-icon-phone">+{prefix} {phonenumber}</p>
                 <p className="businessCard-icon-email">{email}</p>
                 <p className="businessCard-icon-website">{website}</p>
                 <p className="businessCard-icon-address">{address}</p>
